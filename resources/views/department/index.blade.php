@@ -9,7 +9,7 @@
 <table>
     <tr><th>部署ID</th><th>部署名</th></tr>
     @foreach ($departmentList as $department)
-        <tr><td>{{$department->did}}</td><td><a href="{{url('showemployees/' .$department->did)}}">{{$department->dname}}</a></td></tr>
+        <tr><td>{{$department->did}}</td><td><a href="{{url('showemployees/1')}}">{{$department->dname}}</a></td></tr>
     @endforeach
 </table>
 
