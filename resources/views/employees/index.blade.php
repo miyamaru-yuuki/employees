@@ -13,5 +13,18 @@
     @endforeach
 </table>
 
+<form action="/henkoukanryou" method="post">
+    {{ csrf_field() }}
+    <p>部署名：<input type="text" name="dname" value="{{$departmentData['dname']}}"></p>
+    <input type="hidden" name="did" value="{{$did}}">
+    <input type="submit" value="変更">
+</form>
+
+<form action="/delkanryou" method="post">
+    {{ csrf_field() }}
+    <input type="hidden" name="did" value="{{$did}}">
+    <input type="submit" value="削除">
+</form>
+
 </body>
 </html>

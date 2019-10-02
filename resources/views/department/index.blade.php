@@ -13,5 +13,13 @@
     @endforeach
 </table>
 
+<h2>追加</h2>
+
+<form action="/add" method="post">
+    {{ csrf_field() }}
+    <p>部署名：<input type="text" name="dname"></p>
+    <input type="submit" value="追加">
+</form>
+
 </body>
 </html>
