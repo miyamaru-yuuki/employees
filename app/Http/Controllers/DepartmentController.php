@@ -19,11 +19,8 @@ class DepartmentController extends Controller
     public function showemployees($did)
     {
         $employees= new Employees();
-        $employeesList = $employees->find($did);
+        $employeesList = $employees->where('did',$did)->get();
 
-        dd($employeesList);
-
-        return view('todo.henkou',['todoData' => $todoData]);
-        return view('department.index',['departmentList' => $departmentList]);
+        return view('employees.index',['employeesList' => $employeesList]);
     }
 }
