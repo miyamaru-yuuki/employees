@@ -12,3 +12,4 @@
 */
 
 Route::get('/', 'DepartmentController@index');
+Route::get('showemployees/{did}', 'DepartmentController@showemployees');
