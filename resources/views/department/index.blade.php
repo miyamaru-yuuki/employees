@@ -9,13 +9,13 @@
 <table>
     <tr><th>部署ID</th><th>部署名</th><th>編集</th><th>削除</th></tr>
     @foreach ($departmentList as $department)
-        <tr><td>{{$department->did}}</td><td><a href="{{url('showemployees/' .$department->did)}}">{{$department->dname}}</a></td><td><a href="{{url('henkou/' .$department->did)}}">編集</a></td><td><a href="{{url('delkanryou/' .$department->did)}}">削除</a></td></tr>
+        <tr><td>{{$department->did}}</td><td><a href="{{url('showemployees/' .$department->did)}}">{{$department->dname}}</a></td><td><a href="{{url('henkou/' .$department->did)}}">編集</a></td><td><a href="{{url('delkakunin/' .$department->did)}}">削除</a></td></tr>
     @endforeach
 </table>
 
 <h2>追加</h2>
 
-<form action="/add" method="post">
+<form action="/addkakunin" method="post">
     {{ csrf_field() }}
     <p>部署名：<input type="text" name="dname"></p>
     <input type="submit" value="追加">

@@ -24,7 +24,13 @@ class DepartmentController extends Controller
         return view('employees.index',['did' => $did,'employeesList' => $employeesList]);
     }
 
-    public function add(\App\Http\Requests\DepartmentRequest $request)
+    public function addkakunin(\App\Http\Requests\DepartmentRequest $request)
+    {
+        $dname = $request->input('dname');
+        return view('Department.addkakunin',['dname' => $dname]);
+    }
+
+    public function addkanryou(\App\Http\Requests\DepartmentRequest $request)
     {
         $dname = $request->input('dname');
 
@@ -54,8 +60,18 @@ class DepartmentController extends Controller
         return view('Department.kanryou',['shori' => '変更']);
     }
 
-    public function delkanryou($did)
+    public function delkakunin($did)
     {
+        $department= new Department();
+        $departmentData = $department->find($did);
+
+        return view('Department.delkakunin',['departmentData' => $departmentData]);
+    }
+
+    public function delkanryou(Request $request)
+    {
+        $did = $request->input('did');
+
         $department= new Department();
         $department -> where('did', $did)->delete();
 
