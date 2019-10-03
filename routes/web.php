@@ -13,7 +13,8 @@
 
 Route::get('/', 'DepartmentController@index');
 Route::get('showemployees/{did}', 'DepartmentController@showemployees');
+Route::get('henkou/{did}', 'DepartmentController@henkou');
+Route::get('delkanryou/{did}', 'DepartmentController@delkanryou');
 
 Route::post('/add', 'DepartmentController@add');
 Route::post('/henkoukanryou', 'DepartmentController@henkoukanryou');
-Route::post('/delkanryou', 'DepartmentController@delkanryou');

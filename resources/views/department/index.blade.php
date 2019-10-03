@@ -7,9 +7,9 @@
 
 <h1>部署リスト</h1>
 <table>
-    <tr><th>部署ID</th><th>部署名</th></tr>
+    <tr><th>部署ID</th><th>部署名</th><th>編集</th><th>削除</th></tr>
     @foreach ($departmentList as $department)
-        <tr><td>{{$department->did}}</td><td><a href="{{url('showemployees/' .$department->did)}}">{{$department->dname}}</a></td></tr>
+        <tr><td>{{$department->did}}</td><td><a href="{{url('showemployees/' .$department->did)}}">{{$department->dname}}</a></td><td><a href="{{url('henkou/' .$department->did)}}">編集</a></td><td><a href="{{url('delkanryou/' .$department->did)}}">削除</a></td></tr>
     @endforeach
 </table>
 
