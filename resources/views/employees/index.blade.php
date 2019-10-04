@@ -17,7 +17,7 @@
 
 <form action="/employeesaddkakunin" method="post">
     {{ csrf_field() }}
-    <input type="hidden" name="did" value="{{$employees->did}}">
+    <input type="hidden" name="did" value="{{$did}}">
     <p>従業員名：<input type="text" name="ename"></p>
     <p>住所：<input type="text" name="address"></p>
     <p>電話番号：<input type="text" name="tel"></p>
