@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Employees;
+use App\Models\Department;
 
 class EmployeesController extends Controller
 {
@@ -35,7 +36,10 @@ class EmployeesController extends Controller
         $employees= new Employees();
         $employeesData = $employees->find($eid);
 
-        return view('employees.employeeshenkou',['employeesData' => $employeesData]);
+        $department = new Department();
+        $departmentList = $department->all();
+
+        return view('employees.employeeshenkou',['departmentList' => $departmentList,'employeesData' => $employeesData]);
     }
 
     public function employeeshenkoukanryou(\App\Http\Requests\EmployeesRequest $request)
