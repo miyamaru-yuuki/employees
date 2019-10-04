@@ -83,7 +83,7 @@ class DepartmentController extends Controller
         $ename = $request->input('ename');
 
         $employees= new Employees();
-        $employeesList = $employees -> where('ename', $ename)->get();
+        $employeesList = $employees -> where('ename','like','%' .$ename. '%')->get();
 
         return view('Department.kensakukekka',['employeesList' => $employeesList]);
     }
