@@ -6,7 +6,7 @@
 <body>
 
 <p>{{$shori}}されました</p>
-<a href="{{ url('/') }}">戻る</a>
+<a href="{{ url('/showemployees/' .$did) }}">戻る</a>
 
 </body>
 </html>

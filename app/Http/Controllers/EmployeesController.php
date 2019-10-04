@@ -28,7 +28,7 @@ class EmployeesController extends Controller
         $employees= new Employees();
         $employees->create(['did' => $did,'ename' => $ename,'address' => $address,'tel' => $tel]);
 
-        return view('employees.kanryou',['shori' => '追加']);
+        return view('employees.kanryou',['did' => $did,'shori' => '追加']);
     }
 
     public function henkou($eid)
@@ -54,7 +54,7 @@ class EmployeesController extends Controller
         $employees->where('eid',$eid)
             ->update(['did' => $did,'ename' => $ename,'address' => $address,'tel' => $tel]);
 
-        return view('Employees.kanryou',['shori' => '変更']);
+        return view('Employees.kanryou',['did' => $did,'shori' => '変更']);
     }
 
     public function delkakunin($eid)
@@ -70,8 +70,9 @@ class EmployeesController extends Controller
         $eid = $request->input('eid');
 
         $employees= new Employees();
+        $employeesData = $employees->find($eid);
         $employees -> where('eid', $eid)->delete();
 
-        return view('Employees.kanryou',['shori' => '削除']);
+        return view('Employees.kanryou',['did' => $employeesData['did'],'shori' => '削除']);
     }
 }
