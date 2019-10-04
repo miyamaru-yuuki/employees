@@ -21,5 +21,13 @@
     <input type="submit" value="追加">
 </form>
 
+<h2>従業員検索</h2>
+
+<form action="/ekensaku" method="post">
+    {{ csrf_field() }}
+    <p>従業員名：<input type="text" name="ename"></p>
+    <input type="submit" value="検索">
+</form>
+
 </body>
 </html>

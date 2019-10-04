@@ -24,6 +24,7 @@ Route::post('/addkakunin', 'DepartmentController@addkakunin');
 Route::post('/addkanryou', 'DepartmentController@addkanryou');
 Route::post('/henkoukanryou', 'DepartmentController@henkoukanryou');
 Route::post('/delkanryou', 'DepartmentController@delkanryou');
+Route::post('/ekensaku', 'DepartmentController@ekensaku');
 
 Route::post('/employeesaddkakunin', 'EmployeesController@addkakunin');
 Route::post('/employeesaddkanryou', 'EmployeesController@addkanryou');

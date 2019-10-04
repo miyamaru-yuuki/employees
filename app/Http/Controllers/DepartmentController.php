@@ -77,4 +77,14 @@ class DepartmentController extends Controller
 
         return view('Department.kanryou',['shori' => '削除']);
     }
+
+    public function ekensaku(Request $request)
+    {
+        $ename = $request->input('ename');
+
+        $employees= new Employees();
+        $employeesList = $employees -> where('ename', $ename)->get();
+
+        return view('Department.kensakukekka',['employeesList' => $employeesList]);
+    }
 }
