@@ -84,14 +84,8 @@ class DepartmentController extends Controller
         $ename = $request->input('ename');
 
         $employees= new Employees();
-        $employeesList = $employees -> where('ename','like','%' .$ename. '%')->get();
+        $employeesList = $employees -> join('department','employees.did','=','department.did') -> where('ename','like','%' .$ename. '%')->get();
 
-        foreach ($employeesList as $employees){
-            $departmentList[] = DB::table('department') ->join('employees','department.did','=','employees.did')->where('did',$employees->did)->get();
-        }
-
-        dd($departmentList);
-
-        return view('Department.kensakukekka',['departmentList' => $departmentList,'employeesList' => $employeesList]);
+        return view('Department.kensakukekka',['employeesList' => $employeesList]);
     }
 }
