@@ -81,10 +81,15 @@ class DepartmentController extends Controller
 
     public function ekensaku(Request $request)
     {
-        $ename = $request->input('ename');
+        $keyword = $request->input('keyword');
 
         $employees= new Employees();
-        $employeesList = $employees -> join('department','employees.did','=','department.did') -> where('ename','like','%' .$ename. '%')->get();
+        $employeesList = $employees
+            -> join('department','employees.did','=','department.did')
+            -> where('ename','like','%' .$keyword. '%')
+            -> orwhere('address','like','%' .$keyword. '%')
+            -> orwhere('tel',$keyword)
+            ->get();
 
         return view('Department.kensakukekka',['employeesList' => $employeesList]);
     }

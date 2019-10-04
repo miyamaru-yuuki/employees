@@ -25,7 +25,7 @@
 
 <form action="/ekensaku" method="post">
     {{ csrf_field() }}
-    <p>従業員名：<input type="text" name="ename"></p>
+    <p>従業員名：<input type="text" name="keyword"></p>
     <input type="submit" value="検索">
 </form>
 
