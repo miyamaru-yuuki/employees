@@ -8,17 +8,17 @@ use App\Models\Department;
 
 class EmployeesController extends Controller
 {
-    public function employeesaddkakunin(\App\Http\Requests\EmployeesRequest $request)
+    public function addkakunin(\App\Http\Requests\EmployeesRequest $request)
     {
         $did = $request->input('did');
         $ename = $request->input('ename');
         $address = $request->input('address');
         $tel = $request->input('tel');
 
-        return view('employees.employeesaddkakunin',['did' => $did,'ename' => $ename,'address' => $address,'tel' => $tel]);
+        return view('employees.addkakunin',['did' => $did,'ename' => $ename,'address' => $address,'tel' => $tel]);
     }
 
-    public function employeesaddkanryou(\App\Http\Requests\EmployeesRequest $request)
+    public function addkanryou(\App\Http\Requests\EmployeesRequest $request)
     {
         $did = $request->input('did');
         $ename = $request->input('ename');
@@ -31,7 +31,7 @@ class EmployeesController extends Controller
         return view('employees.kanryou',['shori' => '追加']);
     }
 
-    public function employeeshenkou($eid)
+    public function henkou($eid)
     {
         $employees= new Employees();
         $employeesData = $employees->find($eid);
@@ -39,10 +39,10 @@ class EmployeesController extends Controller
         $department = new Department();
         $departmentList = $department->all();
 
-        return view('employees.employeeshenkou',['departmentList' => $departmentList,'employeesData' => $employeesData]);
+        return view('employees.henkou',['departmentList' => $departmentList,'employeesData' => $employeesData]);
     }
 
-    public function employeeshenkoukanryou(\App\Http\Requests\EmployeesRequest $request)
+    public function henkoukanryou(\App\Http\Requests\EmployeesRequest $request)
     {
         $eid = $request->input('eid');
         $did = $request->input('did');
@@ -57,15 +57,15 @@ class EmployeesController extends Controller
         return view('Employees.kanryou',['shori' => '変更']);
     }
 
-    public function employeesdelkakunin($eid)
+    public function delkakunin($eid)
     {
         $employees= new Employees();
         $employeesData = $employees->find($eid);
 
-        return view('Employees.employeesdelkakunin',['employeesData' => $employeesData]);
+        return view('Employees.delkakunin',['employeesData' => $employeesData]);
     }
 
-    public function employeesdelkanryou(Request $request)
+    public function delkanryou(Request $request)
     {
         $eid = $request->input('eid');
 

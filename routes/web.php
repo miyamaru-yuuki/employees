@@ -16,8 +16,8 @@ Route::get('showemployees/{did}', 'DepartmentController@showemployees');
 Route::get('henkou/{did}', 'DepartmentController@henkou');
 Route::get('delkakunin/{did}', 'DepartmentController@delkakunin');
 
-Route::get('employeesdelkakunin/{eid}', 'EmployeesController@employeesdelkakunin');
-Route::get('employeeshenkou/{eid}', 'EmployeesController@employeeshenkou');
+Route::get('employeesdelkakunin/{eid}', 'EmployeesController@delkakunin');
+Route::get('employeeshenkou/{eid}', 'EmployeesController@henkou');
 
 
 Route::post('/addkakunin', 'DepartmentController@addkakunin');
@@ -25,7 +25,7 @@ Route::post('/addkanryou', 'DepartmentController@addkanryou');
 Route::post('/henkoukanryou', 'DepartmentController@henkoukanryou');
 Route::post('/delkanryou', 'DepartmentController@delkanryou');
 
-Route::post('/employeesaddkakunin', 'EmployeesController@employeesaddkakunin');
-Route::post('/employeesaddkanryou', 'EmployeesController@employeesaddkanryou');
-Route::post('/employeeshenkoukanryou', 'EmployeesController@employeeshenkoukanryou');
-Route::post('/employeesdelkanryou', 'EmployeesController@employeesdelkanryou');
+Route::post('/employeesaddkakunin', 'EmployeesController@addkakunin');
+Route::post('/employeesaddkanryou', 'EmployeesController@addkanryou');
+Route::post('/employeeshenkoukanryou', 'EmployeesController@henkoukanryou');
+Route::post('/employeesdelkanryou', 'EmployeesController@delkanryou');
