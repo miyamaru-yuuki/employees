@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Department;
 use App\Models\Employees;
+use DB;
 
 class DepartmentController extends Controller
 {
@@ -85,6 +86,12 @@ class DepartmentController extends Controller
         $employees= new Employees();
         $employeesList = $employees -> where('ename','like','%' .$ename. '%')->get();
 
-        return view('Department.kensakukekka',['employeesList' => $employeesList]);
+        foreach ($employeesList as $employees){
+            $departmentList[] = DB::table('department') ->join('employees','department.did','=','employees.did')->where('did',$employees->did)->get();
+        }
+
+        dd($departmentList);
+
+        return view('Department.kensakukekka',['departmentList' => $departmentList,'employeesList' => $employeesList]);
     }
 }
