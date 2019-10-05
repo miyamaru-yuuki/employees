@@ -23,7 +23,7 @@
 
 <h2>キーワード検索</h2>
 
-<form action="/ekensaku" method="post">
+<form action="/ekensaku" method="get">
     {{ csrf_field() }}
     <div>検索項目:
     <select name="kensakunumber">
