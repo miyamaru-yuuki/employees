@@ -82,14 +82,26 @@ class DepartmentController extends Controller
     public function ekensaku(Request $request)
     {
         $keyword = $request->input('keyword');
+        $kensakunumber = $request->input('kensakunumber');
 
         $employees= new Employees();
-        $employeesList = $employees
-            -> join('department','employees.did','=','department.did')
-            -> where('ename','like','%' .$keyword. '%')
-            -> orwhere('address','like','%' .$keyword. '%')
-            -> orwhere('tel',$keyword)
-            ->get();
+
+        if($kensakunumber == 1){
+            $employeesList = $employees
+                -> join('department','employees.did','=','department.did')
+                -> where('ename','like','%' .$keyword. '%')
+                ->get();
+        }elseif($kensakunumber == 2){
+            $employeesList = $employees
+                -> join('department','employees.did','=','department.did')
+                -> where('address','like','%' .$keyword. '%')
+                ->get();
+        }else{
+            $employeesList = $employees
+                -> join('department','employees.did','=','department.did')
+                -> orwhere('tel',$keyword)
+                ->get();
+        }
 
         return view('Department.kensakukekka',['employeesList' => $employeesList]);
     }

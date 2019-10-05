@@ -21,11 +21,18 @@
     <input type="submit" value="追加">
 </form>
 
-<h2>従業員検索</h2>
+<h2>キーワード検索</h2>
 
 <form action="/ekensaku" method="post">
     {{ csrf_field() }}
-    <p>従業員名：<input type="text" name="keyword"></p>
+    <div>検索項目:
+    <select name="kensakunumber">
+        <option value="1">従業員名</option>
+        <option value="2">住所</option>
+        <option value="3">電話番号</option>
+    </select>
+    </div>
+    <p>検索ワード：<input type="text" name="keyword"></p>
     <input type="submit" value="検索">
 </form>
 
