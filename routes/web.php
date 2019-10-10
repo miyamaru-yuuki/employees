@@ -30,3 +30,7 @@ Route::post('/employeesaddkakunin', 'EmployeesController@addkakunin');
 Route::post('/employeesaddkanryou', 'EmployeesController@addkanryou');
 Route::post('/employeeshenkoukanryou', 'EmployeesController@henkoukanryou');
 Route::post('/employeesdelkanryou', 'EmployeesController@delkanryou');
+
+INSERT INTO Certification (cname) VALUES ("英検2級");
+INSERT INTO Certification (cname) VALUES ("電検3種");
+INSERT INTO Certification (cname) VALUES ("電検2種");
