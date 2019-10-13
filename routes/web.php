@@ -19,6 +19,7 @@ Route::get('delkakunin/{did}', 'DepartmentController@delkakunin');
 Route::get('employeesdelkakunin/{eid}', 'EmployeesController@delkakunin');
 Route::get('employeeshenkou/{eid}', 'EmployeesController@henkou');
 
+Route::get('showcertification/', 'EmployeesCertificationController@showcertification');
 Route::get('employeescertification/{eid}', 'EmployeesCertificationController@index');
 
 

@@ -36,5 +36,7 @@
     <input type="submit" value="検索">
 </form>
 
+<h2><a href="{{url('showcertification/')}}">資格リスト</a></h2>
+
 </body>
 </html>
