@@ -19,7 +19,7 @@ Route::get('delkakunin/{did}', 'DepartmentController@delkakunin');
 Route::get('employeesdelkakunin/{eid}', 'EmployeesController@delkakunin');
 Route::get('employeeshenkou/{eid}', 'EmployeesController@henkou');
 
-Route::get('employeescertification/{eid}', 'EmployeesController@henkou');
+Route::get('employeescertification/{eid}', 'EmployeesCertificationController@index');
 
 
 Route::post('/addkakunin', 'DepartmentController@addkakunin');
