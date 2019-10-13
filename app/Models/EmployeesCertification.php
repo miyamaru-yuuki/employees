@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class EmployeesCertification extends Model
 {
-    protected $table = 'EmployeesCertificationController';
+    protected $table = 'EmployeesCertification';
     protected $guarded = array('ecid');
     protected $primaryKey = 'ecid';
     public $timestamps = false;

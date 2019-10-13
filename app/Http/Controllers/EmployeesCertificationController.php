@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 //use Illuminate\Http\Request;
-//use App\Models\Certification;
+use App\Models\Certification;
 use App\Models\EmployeesCertification;
 
 class EmployeesCertificationController extends Controller
@@ -11,10 +11,19 @@ class EmployeesCertificationController extends Controller
     public function index($eid)
     {
         $employeesCertification = new EmployeesCertification();
-        $cid= $employeesCertification->where('eid',$eid)->get();
+        $employeesCertificationdata= $employeesCertification->where('eid',$eid)->get();
 
-        dd($cid);
+        dd($employeesCertificationdata[1]['cid']);
 
-        //return view('department.index',['departmentList' => $departmentList]);
+        foreach ($employeesCertificationdata as $data){
+
+        }
+
+        $certification = new Certification();
+        $cname = $certification->where('cid',$cid)->get();
+
+        dd($cname);
+
+        return view('certification.index',['cid' => $cid]);
     }
 }
