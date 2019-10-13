@@ -11,19 +11,12 @@ class EmployeesCertificationController extends Controller
     public function index($eid)
     {
         $employeesCertification = new EmployeesCertification();
-        $employeesCertificationdata= $employeesCertification->where('eid',$eid)->get();
+        $employeesCertificationdata= $employeesCertification
+            -> join('certification','employeescertification.cid','=','certification.cid')
+            //-> join('employees','employeescertification.eid','=','employees.eid')
+            ->where('eid',$eid)
+            ->get();
 
-        dd($employeesCertificationdata[1]['cid']);
-
-        foreach ($employeesCertificationdata as $data){
-
-        }
-
-        $certification = new Certification();
-        $cname = $certification->where('cid',$cid)->get();
-
-        dd($cname);
-
-        return view('certification.index',['cid' => $cid]);
+        return view('certification.index',['employeesCertificationdata' => $employeesCertificationdata]);
     }
 }
