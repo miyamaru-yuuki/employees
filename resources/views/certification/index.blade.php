@@ -13,5 +13,13 @@
     @endforeach
 </table>
 
+<h2>資格追加</h2>
+
+<form action="/mycertificationaddkakunin" method="post">
+    {{ csrf_field() }}
+    <p>資格名：<input type="text" name="cname"></p>
+    <input type="submit" value="追加">
+</form>
+
 </body>
 </html>

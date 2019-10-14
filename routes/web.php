@@ -33,3 +33,14 @@ Route::post('/employeesaddkakunin', 'EmployeesController@addkakunin');
 Route::post('/employeesaddkanryou', 'EmployeesController@addkanryou');
 Route::post('/employeeshenkoukanryou', 'EmployeesController@henkoukanryou');
 Route::post('/employeesdelkanryou', 'EmployeesController@delkanryou');
+
+Route::get('certificationhenkou/{cid}', 'EmployeesCertificationController@certificationhenkou');
+Route::get('certificationdelkakunin/{cid}', 'EmployeesCertificationController@certificationdelkakunin');
+
+Route::post('/certificationaddkakunin', 'EmployeesCertificationController@certificationaddkakunin');
+Route::post('/certificationaddkanryou', 'EmployeesCertificationController@certificationaddkanryou');
+Route::post('/certificationhenkoukanryou', 'EmployeesCertificationController@certificationhenkoukanryou');
+Route::post('/certificationdelkanryou', 'EmployeesCertificationController@certificationdelkanryou');
+
+Route::post('/mycertificationaddkakunin', 'EmployeesCertificationController@mycertificationaddkakunin');
+Route::post('/mycertificationaddkanryou', 'EmployeesCertificationController@mycertificationaddkanryou');
