@@ -27,5 +27,7 @@
     <input type="submit" value="変更">
 </form>
 
+<a href="{{ url('employeescertification/' .$employeesData['eid']) }}">戻る</a>
+
 </body>
 </html>

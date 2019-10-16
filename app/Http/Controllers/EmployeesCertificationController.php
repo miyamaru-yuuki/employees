@@ -111,6 +111,30 @@ class EmployeesCertificationController extends Controller
         return view('mycertification.kanryou',['shori' => '追加','eid' => $eid]);
     }
 
+    public function mycertificationhenkou($ecid)
+    {
+        $employeesCertification = new EmployeesCertification();
+        $employeesCertificationData = $employeesCertification->find($ecid);
+
+        $certification= new Certification();
+        $certificationData = $certification->all();
+
+        return view('mycertification.henkou',['certificationData' => $certificationData,'employeesCertificationData' => $employeesCertificationData]);
+    }
+
+    public function mycertificationhenkoukanryou(Request $request)
+    {
+        $cid = $request->input('cid');
+        $eid = $request->input('eid');
+        $ecid = $request->input('ecid');
+
+        $employeesCertification = new EmployeesCertification();
+        $employeesCertification->where('ecid',$ecid)
+            ->update(['cid' => $cid]);
+
+        return view('mycertification.kanryou',['shori' => '変更','eid' => $eid]);
+    }
+
     public function mycertificationdelkakunin($ecid)
     {
         $employeesCertification = new EmployeesCertification();
