@@ -124,12 +124,12 @@ class EmployeesCertificationController extends Controller
 
     public function mycertificationdelkanryou(Request $request)
     {
-        $eid = $request->input('eid');
+        $ecid = $request->input('ecid');
 
-        $employees= new Employees();
-        $employeesData = $employees->find($eid);
-        $employees -> where('eid', $eid)->delete();
+        $employeesCertification = new EmployeesCertification();
+        $employeesCertificationData = $employeesCertification->find($ecid);
+        $employeesCertification -> where('ecid', $ecid)->delete();
 
-        return view('mycertification.kanryou',['did' => $employeesData['did'],'shori' => '削除']);
+        return view('mycertification.kanryou',['eid' => $employeesCertificationData['eid'],'shori' => '削除']);
     }
 }
