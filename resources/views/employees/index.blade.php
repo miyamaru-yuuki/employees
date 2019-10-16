@@ -24,5 +24,7 @@
     <input type="submit" value="追加">
 </form>
 
+<a href="{{ url('/') }}">戻る</a>
+
 </body>
 </html>

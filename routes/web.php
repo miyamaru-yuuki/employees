@@ -42,5 +42,8 @@ Route::post('/certificationaddkanryou', 'EmployeesCertificationController@certif
 Route::post('/certificationhenkoukanryou', 'EmployeesCertificationController@certificationhenkoukanryou');
 Route::post('/certificationdelkanryou', 'EmployeesCertificationController@certificationdelkanryou');
 
+Route::get('mycertificationdelkakunin/{ecid}', 'EmployeesCertificationController@mycertificationdelkakunin');
+
 Route::post('/mycertificationaddkakunin', 'EmployeesCertificationController@mycertificationaddkakunin');
 Route::post('/mycertificationaddkanryou', 'EmployeesCertificationController@mycertificationaddkanryou');
+Route::post('mycertificationdelkanryou', 'EmployeesCertificationController@mycertificationdelkanryou');

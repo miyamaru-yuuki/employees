@@ -7,9 +7,9 @@
 
 <h1>{{$employeesData['ename']}}</h1>
 <table>
-    <tr><th>資格名</th></tr>
+    <tr><th>資格名</th><th>削除</th></tr>
     @foreach ($employeesCertificationdata as $data)
-        <tr><td>{{$data->cname}}</td></tr>
+        <tr><td>{{$data->cname}}</td><td><a href="{{url('mycertificationdelkakunin/' .$data->ecid)}}">削除</a></td></tr>
     @endforeach
 </table>
 
@@ -17,9 +17,18 @@
 
 <form action="/mycertificationaddkakunin" method="post">
     {{ csrf_field() }}
-    <p>資格名：<input type="text" name="cname"></p>
+    <div>資格名：
+        <select name="cid">
+            @foreach($certificationData as $data)
+                    <option value="{{$data['cid']}}">{{$data['cname']}}</option>
+            @endforeach
+        </select>
+    </div>
+    <input type="hidden" name="eid" value="{{$employeesData['eid']}}">
     <input type="submit" value="追加">
 </form>
+
+<a href="{{ url('showemployees/' .$employeesData['did']) }}">戻る</a>
 
 </body>
 </html>

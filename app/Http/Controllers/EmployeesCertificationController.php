@@ -14,13 +14,16 @@ class EmployeesCertificationController extends Controller
         $employees= new Employees();
         $employeesData = $employees->find($eid);
 
+        $certification= new Certification();
+        $certificationData = $certification->all();
+
         $employeesCertification = new EmployeesCertification();
         $employeesCertificationdata= $employeesCertification
             -> join('certification','employeescertification.cid','=','certification.cid')
             ->where('eid',$eid)
             ->get();
 
-        return view('certification.index',['employeesData' => $employeesData,'employeesCertificationdata' => $employeesCertificationdata]);
+        return view('certification.index',['certificationData' => $certificationData,'employeesData' => $employeesData,'employeesCertificationdata' => $employeesCertificationdata]);
     }
 
     public function showcertification()
@@ -85,19 +88,48 @@ class EmployeesCertificationController extends Controller
         return view('certification.kanryou',['shori' => '削除']);
     }
 
-    public function mycertificationaddkakunin(\App\Http\Requests\EmployeesCertificationRequest $request)
+    public function mycertificationaddkakunin(Request $request)
     {
-        $cname = $request->input('cname');
-        return view('mycertification.addkakunin',['cname' => $cname]);
-    }
-
-    public function mycertificationaddkanryou(\App\Http\Requests\EmployeesCertificationRequest $request)
-    {
-        $cname = $request->input('cname');
+        $cid = $request->input('cid');
+        $eid = $request->input('eid');
 
         $certification= new Certification();
-        $certification->create(['cname' => $cname]);
+        $certificationData = $certification->find($cid);
 
-        return view('mycertification.kanryou',['shori' => '追加']);
+        return view('mycertification.addkakunin',['certificationData' => $certificationData,'eid' => $eid]);
+    }
+
+    public function mycertificationaddkanryou(Request $request)
+    {
+
+        $cid = $request->input('cid');
+        $eid = $request->input('eid');
+
+        $employeesCertification = new EmployeesCertification();
+        $employeesCertification->create(['eid' => $eid,'cid' => $cid]);
+
+        return view('mycertification.kanryou',['shori' => '追加','eid' => $eid]);
+    }
+
+    public function mycertificationdelkakunin($ecid)
+    {
+        $employeesCertification = new EmployeesCertification();
+        $employeesCertificationData = $employeesCertification->find($ecid);
+
+        $certification= new Certification();
+        $certificationData = $certification->find($employeesCertificationData['cid']);
+
+        return view('mycertification.delkakunin',['certificationData' => $certificationData,'employeesCertificationData' => $employeesCertificationData]);
+    }
+
+    public function mycertificationdelkanryou(Request $request)
+    {
+        $eid = $request->input('eid');
+
+        $employees= new Employees();
+        $employeesData = $employees->find($eid);
+        $employees -> where('eid', $eid)->delete();
+
+        return view('mycertification.kanryou',['did' => $employeesData['did'],'shori' => '削除']);
     }
 }

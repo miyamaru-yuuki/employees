@@ -5,15 +5,16 @@
 </head>
 <body>
 
-<p>{{$cname}}を追加しますか？</p>
+<p>{{$certificationData['cname']}}を追加しますか？</p>
 
 <form action="/mycertificationaddkanryou" method="post">
     {{ csrf_field() }}
-    <input type="hidden" name="cname" value="{{$cname}}">
+    <input type="hidden" name="cid" value="{{$certificationData['cid']}}">
+    <input type="hidden" name="eid" value="{{$eid}}">
     <input type="submit" value="追加">
 </form>
 
-<a href="{{ url('showcertification/') }}">戻る</a>
+<a href="{{ url('employeescertification/' .$eid) }}">戻る</a>
 
 </body>
 </html>
