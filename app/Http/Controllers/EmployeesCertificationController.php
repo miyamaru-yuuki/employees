@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Employees;
 use App\Models\Certification;
 use App\Models\EmployeesCertification;
+use DB;
 
 class EmployeesCertificationController extends Controller
 {
@@ -15,7 +16,17 @@ class EmployeesCertificationController extends Controller
         $employeesData = $employees->find($eid);
 
         $certification= new Certification();
-        $certificationData = $certification->all();
+        //SQL
+        $certificationData = $certification
+            ->whereNotExists(function ($query,$eid) {
+                $query->select(DB::raw(1))
+                    ->from('employeescertification')
+                    ->whereRaw('employeescertification.cid = certification.cid')
+                    ->where('eid',$eid);
+            })
+            ->get();
+
+        dd($certificationData);
 
         $employeesCertification = new EmployeesCertification();
         $employeesCertificationdata= $employeesCertification
@@ -109,30 +120,6 @@ class EmployeesCertificationController extends Controller
         $employeesCertification->create(['eid' => $eid,'cid' => $cid]);
 
         return view('mycertification.kanryou',['shori' => '追加','eid' => $eid]);
-    }
-
-    public function mycertificationhenkou($ecid)
-    {
-        $employeesCertification = new EmployeesCertification();
-        $employeesCertificationData = $employeesCertification->find($ecid);
-
-        $certification= new Certification();
-        $certificationData = $certification->all();
-
-        return view('mycertification.henkou',['certificationData' => $certificationData,'employeesCertificationData' => $employeesCertificationData]);
-    }
-
-    public function mycertificationhenkoukanryou(Request $request)
-    {
-        $cid = $request->input('cid');
-        $eid = $request->input('eid');
-        $ecid = $request->input('ecid');
-
-        $employeesCertification = new EmployeesCertification();
-        $employeesCertification->where('ecid',$ecid)
-            ->update(['cid' => $cid]);
-
-        return view('mycertification.kanryou',['shori' => '変更','eid' => $eid]);
     }
 
     public function mycertificationdelkakunin($ecid)

@@ -7,9 +7,9 @@
 
 <h1>{{$employeesData['ename']}}</h1>
 <table>
-    <tr><th>資格名</th><th>編集</th><th>削除</th></tr>
+    <tr><th>資格名</th><th>削除</th></tr>
     @foreach ($employeesCertificationdata as $data)
-        <tr><td>{{$data->cname}}</td><td><a href="{{url('mycertificationhenkou/' .$data->ecid)}}">編集</a></td><td><a href="{{url('mycertificationdelkakunin/' .$data->ecid)}}">削除</a></td></tr>
+        <tr><td>{{$data->cname}}</td><td><a href="{{url('mycertificationdelkakunin/' .$data->ecid)}}">削除</a></td></tr>
     @endforeach
 </table>
 
