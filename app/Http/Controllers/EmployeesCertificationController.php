@@ -16,19 +16,12 @@ class EmployeesCertificationController extends Controller
         $employeesData = $employees->find($eid);
 
         $certification= new Certification();
-        //SQL
         $certificationData = $certification
-            ->leftJoin('employeescertification', 'certification.cid', '=', 'employeescertification.cid')
-            ->where('eid',$eid)
+            ->whereNotIn('cid',DB::raw('SELECT cid FROM EmployeesCertification WHERE EmployeesCertification.eid=6'))
             ->get();
 
-        $cid = [];
-        foreach ($certificationData as $data){
-            $cid[] = $data->cid;
-        }
-
-        $cid = implode(",",$cid);
-        $certificationData = $certification->whereNotIn('cid', [$cid])->get();
+        dd($certificationData);
+        //$certificationData = $certification->whereNotIn('cid', [])->get();
 
         //dd($certificationData);
 
