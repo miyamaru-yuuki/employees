@@ -27,9 +27,10 @@ class EmployeesCertificationController extends Controller
             $cid[] = $data->cid;
         }
 
-        $certificationData = $certificationData->whereNotIn('cid', $cid)->get();
+        $cid = implode(",",$cid);
+        $certificationData = $certification->whereNotIn('cid', [$cid])->get();
 
-        dd($certificationData);
+        //dd($certificationData);
 
         $employeesCertification = new EmployeesCertification();
         $employeesCertificationdata= $employeesCertification
