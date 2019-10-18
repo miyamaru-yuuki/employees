@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="73750652-dc35-4d4d-8acc-bf5de5fa0839" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeesCertificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeesCertificationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/certification/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/certification/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,8 +39,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/EmployeesCertificationController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="63" lean-forward="true" selection-start-line="23" selection-start-column="63" selection-end-line="23" selection-end-column="63" />
+            <state relative-caret-position="420">
+              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
               <folding>
                 <element signature="e#40#68#0#PHP" expanded="true" />
               </folding>
@@ -388,12 +386,12 @@
       <workItem from="1570253306808" duration="3333000" />
       <workItem from="1570604809172" duration="918000" />
       <workItem from="1570676360776" duration="2006000" />
-      <workItem from="1570933339325" duration="19336000" />
+      <workItem from="1570933339325" duration="20845000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60412000" />
+    <option name="totallyTimeSpent" value="61921000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="836" extended-state="0" />
@@ -674,8 +672,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/EmployeesCertificationController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="63" lean-forward="true" selection-start-line="23" selection-start-column="63" selection-end-line="23" selection-end-column="63" />
+        <state relative-caret-position="420">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
           <folding>
             <element signature="e#40#68#0#PHP" expanded="true" />
           </folding>

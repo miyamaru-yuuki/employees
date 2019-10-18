@@ -18,13 +18,16 @@ class EmployeesCertificationController extends Controller
         $certification= new Certification();
         //SQL
         $certificationData = $certification
-            ->whereNotExists(function ($query,$eid) {
-                $query->select(DB::raw(1))
-                    ->from('employeescertification')
-                    ->whereRaw('employeescertification.cid = certification.cid')
-                    ->where('eid',$eid);
-            })
+            ->leftJoin('employeescertification', 'certification.cid', '=', 'employeescertification.cid')
+            ->where('eid',$eid)
             ->get();
+
+        $cid = [];
+        foreach ($certificationData as $data){
+            $cid[] = $data->cid;
+        }
+
+        $certificationData = $certificationData->whereNotIn('cid', $cid)->get();
 
         dd($certificationData);
 
