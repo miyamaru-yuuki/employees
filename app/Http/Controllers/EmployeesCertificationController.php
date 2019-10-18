@@ -15,15 +15,20 @@ class EmployeesCertificationController extends Controller
         $employees= new Employees();
         $employeesData = $employees->find($eid);
 
-        $certification= new Certification();
-        $certificationData = $certification
-            ->whereNotIn('cid',DB::raw('SELECT cid FROM EmployeesCertification WHERE EmployeesCertification.eid=6'))
+        $employeesCertification = new EmployeesCertification();
+        $employeesCertificationData = $employeesCertification
+            ->where('eid',$eid)
             ->get();
 
-        dd($certificationData);
-        //$certificationData = $certification->whereNotIn('cid', [])->get();
+        $cid = [];
+        foreach ($employeesCertificationData as $data){
+            array_push($cid,$data->cid);
+        }
 
-        //dd($certificationData);
+        $certification= new Certification();
+        $certificationData = $certification
+            ->whereNotIn('cid',$cid)
+            ->get();
 
         $employeesCertification = new EmployeesCertification();
         $employeesCertificationdata= $employeesCertification
