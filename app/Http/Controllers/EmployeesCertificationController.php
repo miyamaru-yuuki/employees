@@ -53,7 +53,9 @@ class EmployeesCertificationController extends Controller
             ->where('cid',$cid)
             ->get();
 
-        return view('certification.havecertification',['employeesCertificationData' => $employeesCertificationData,'certificationData' => $certificationData]);
+        $count = $employeesCertificationData->count();
+
+        return view('certification.havecertification',['employeesCertificationData' => $employeesCertificationData,'certificationData' => $certificationData,'count' => $count]);
     }
 
     public function certificationaddkakunin(\App\Http\Requests\EmployeesCertificationRequest $request)

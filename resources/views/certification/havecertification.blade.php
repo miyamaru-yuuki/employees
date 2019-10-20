@@ -13,6 +13,8 @@
     @endforeach
 </table>
 
+<p>保有人数：{{$count}}人</p>
+
 <a href="{{ url('showcertification/') }}">戻る</a>
 
 </body>
