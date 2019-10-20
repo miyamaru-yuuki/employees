@@ -20,8 +20,8 @@ Route::get('employeesdelkakunin/{eid}', 'EmployeesController@delkakunin');
 Route::get('employeeshenkou/{eid}', 'EmployeesController@henkou');
 
 Route::get('showcertification/', 'EmployeesCertificationController@showcertification');
+Route::get('havecertification/{cid}', 'EmployeesCertificationController@havecertification');
 Route::get('employeescertification/{eid}', 'EmployeesCertificationController@index');
-
 
 Route::post('/addkakunin', 'DepartmentController@addkakunin');
 Route::post('/addkanryou', 'DepartmentController@addkanryou');

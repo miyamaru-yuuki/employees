@@ -28,7 +28,6 @@ class EmployeesCertificationController extends Controller
             ->get();
 
         $certificationData2= $certification
-            //-> join('certification','employeescertification.cid','=','certification.cid')
             ->whereIn('cid',$cid)
             ->get();
 
@@ -41,6 +40,20 @@ class EmployeesCertificationController extends Controller
         $certificationData = $certification->all();
 
         return view('certification.showcertification',['certificationData' => $certificationData]);
+    }
+
+    public function havecertification($cid)
+    {
+        $certification= new Certification();
+        $certificationData = $certification->find($cid);
+
+        $employeesCertification = new EmployeesCertification();
+        $employeesCertificationData = $employeesCertification
+            ->join('employees','employeescertification.eid','=','employees.eid')
+            ->where('cid',$cid)
+            ->get();
+
+        return view('certification.havecertification',['employeesCertificationData' => $employeesCertificationData,'certificationData' => $certificationData]);
     }
 
     public function certificationaddkakunin(\App\Http\Requests\EmployeesCertificationRequest $request)

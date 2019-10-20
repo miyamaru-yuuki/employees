@@ -9,7 +9,7 @@
 <table>
     <tr><th>資格ID</th><th>資格名</th><th>編集</th><th>削除</th></tr>
     @foreach ($certificationData as $data)
-        <tr><td>{{$data->cid}}</td><td>{{$data->cname}}</td><td><a href="{{url('certificationhenkou/' .$data->cid)}}">編集</a></td><td><a href="{{url('certificationdelkakunin/' .$data->cid)}}">削除</a></td></tr>
+        <tr><td>{{$data->cid}}</td><td><a href="{{url('havecertification/' .$data->cid)}}">{{$data->cname}}</a></td><td><a href="{{url('certificationhenkou/' .$data->cid)}}">編集</a></td><td><a href="{{url('certificationdelkakunin/' .$data->cid)}}">削除</a></td></tr>
     @endforeach
 </table>
 
