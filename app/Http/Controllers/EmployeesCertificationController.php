@@ -27,13 +27,12 @@ class EmployeesCertificationController extends Controller
             ->whereNotIn('cid',$cid)
             ->get();
 
-        $employeesCertification = new EmployeesCertification();
-        $employeesCertificationdata= $employeesCertification
-            -> join('certification','employeescertification.cid','=','certification.cid')
-            ->where('eid',$eid)
+        $certificationData2= $certification
+            //-> join('certification','employeescertification.cid','=','certification.cid')
+            ->whereIn('cid',$cid)
             ->get();
 
-        return view('certification.index',['certificationData' => $certificationData,'employeesData' => $employeesData,'employeesCertificationdata' => $employeesCertificationdata]);
+        return view('certification.index',['certificationData' => $certificationData,'certificationData2' => $certificationData2,'employeesData' => $employeesData]);
     }
 
     public function showcertification()
