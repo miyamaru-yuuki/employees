@@ -125,7 +125,6 @@ class EmployeesCertificationController extends Controller
     {
         $employeesCertification = new EmployeesCertification();
         $employeesCertificationData = $employeesCertification
-            ->select('cid','ecid')
             ->find($ecid);
 
         $certification= new Certification();
@@ -140,7 +139,6 @@ class EmployeesCertificationController extends Controller
 
         $employeesCertification = new EmployeesCertification();
         $employeesCertificationData = $employeesCertification
-            ->select('eid')
             ->find($ecid);
         $employeesCertification -> where('ecid', $ecid)->delete();
 
