@@ -50,17 +50,10 @@ class EmployeesCertificationController extends Controller
         $employeesCertification = new EmployeesCertification();
         $employeesCertificationData = $employeesCertification
             ->join('employees','employeescertification.eid','=','employees.eid')
-            //->select([ DB::raw('COUNT(employeescertification.ecid)')])
-            ->select(DB::raw('count(ecid),ecid'))
-            ->groupBy('ecid')
             ->where('cid',$cid)
             ->get();
 
-        dd($employeesCertificationData);
-
-        //$count = $employeesCertificationData->count();
-
-        return view('certification.havecertification',['employeesCertificationData' => $employeesCertificationData,'certificationData' => $certificationData,'count' => $count]);
+        return view('certification.havecertification',['employeesCertificationData' => $employeesCertificationData,'certificationData' => $certificationData]);
     }
 
     public function certificationaddkakunin(\App\Http\Requests\EmployeesCertificationRequest $request)
