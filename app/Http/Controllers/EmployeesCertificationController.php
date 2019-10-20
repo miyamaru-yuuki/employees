@@ -7,6 +7,7 @@ use App\Models\Employees;
 use App\Models\Certification;
 use App\Models\EmployeesCertification;
 use DB;
+use Illuminate\Support\Arr;
 
 class EmployeesCertificationController extends Controller
 {
@@ -16,14 +17,11 @@ class EmployeesCertificationController extends Controller
         $employeesData = $employees->find($eid);
 
         $employeesCertification = new EmployeesCertification();
-        $employeesCertificationData = $employeesCertification
+        $cid = $employeesCertification
             ->where('eid',$eid)
-            ->get();
-
-        $cid = [];
-        foreach ($employeesCertificationData as $data){
-            array_push($cid,$data->cid);
-        }
+            ->select('cid')
+            ->get()
+            ->toArray();
 
         $certification= new Certification();
         $certificationData = $certification
