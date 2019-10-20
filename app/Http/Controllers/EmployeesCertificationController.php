@@ -7,7 +7,6 @@ use App\Models\Employees;
 use App\Models\Certification;
 use App\Models\EmployeesCertification;
 use DB;
-use Illuminate\Support\Arr;
 
 class EmployeesCertificationController extends Controller
 {
@@ -125,7 +124,9 @@ class EmployeesCertificationController extends Controller
     public function mycertificationdelkakunin($ecid)
     {
         $employeesCertification = new EmployeesCertification();
-        $employeesCertificationData = $employeesCertification->find($ecid);
+        $employeesCertificationData = $employeesCertification
+            ->select('cid','ecid')
+            ->find($ecid);
 
         $certification= new Certification();
         $certificationData = $certification->find($employeesCertificationData['cid']);
@@ -138,7 +139,9 @@ class EmployeesCertificationController extends Controller
         $ecid = $request->input('ecid');
 
         $employeesCertification = new EmployeesCertification();
-        $employeesCertificationData = $employeesCertification->find($ecid);
+        $employeesCertificationData = $employeesCertification
+            ->select('eid')
+            ->find($ecid);
         $employeesCertification -> where('ecid', $ecid)->delete();
 
         return view('mycertification.kanryou',['eid' => $employeesCertificationData['eid'],'shori' => '削除']);
